@@ -1,6 +1,7 @@
 import React from 'react';
 import NftData from '../data/test_data.json';
-import { Box, Center, Flex, Spacer, Grid, GridItem, SimpleGrid, Circle } from "@chakra-ui/react"
+import { Box, Center, Text, Stack, Grid, GridItem, SimpleGrid, Circle } from "@chakra-ui/react"
+import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons'
 
 const makeColors = ["#2115A9 10.54%, #FFFFFF 132.1%", "#52FF00 10.54%, #FFFFFF 132.1%", "#35FFCF 10.54%, #FFFFFF 132.1%", "#FFC93D 10.54%, #FFFFFF 132.1%"]
 const takeColors = ["#48FFA7 10.54%, #FFFFFF 132.1%", "#FFC93D 10.54%, #FFFFFF 132.1%", "#1ABBEE 10.54%, #FFFFFF 132.1%", "#EE1A1A 10.54%, #FFFFFF 132.1%"]
@@ -36,59 +37,70 @@ export default function NftList () {
 								<SimpleGrid column={1}>
 								{take.map((takeDetails) => {
 									return (
-										<ul>
-											<li>{takeDetails.amount || "1"} {takeDetails.tokenName}</li>
-										</ul>
+										<Text fontSize="xs" textAlign="left">
+											• {takeDetails.amount || "1"} {takeDetails.tokenName}
+										</Text>
 									)
 								})}
 								</SimpleGrid>
 								</Center>
 							
 								<Center>
-								<SimpleGrid columns={2} spacing='.15rem'>
-									{take.map((takeOrder, index) => {
-										const boxSize = take.length > 1 ? '2.5rem' : '5.5rem'
-
-										return (index < 4) && (
-											<>
-												<Box minHeight={boxSize} width={boxSize} borderRadius="8px" bgGradient={`linear(to-br, ${makeColors[index]})`} />
-											</>
-										)
-									})}
-									{take.length > 4 && <p>+{take.length - 4}</p>}
+								<SimpleGrid columns={2}>
+									<SimpleGrid colums={1}>
+										{take.length > 4 && <Text mt="34px" fontSize="xs">+{take.length - 4}</Text>}
+									</SimpleGrid>
+									<SimpleGrid columns={2} spacing='.2rem'>
+										{take.map((takeOrder, index) => {
+											const boxSize = take.length > 1 ? '2.5rem' : '5.5rem'
+											return (index < 4) && (
+												<>
+													<Box minHeight={boxSize} width={boxSize} borderRadius="8px" bgGradient={`linear(to-br, ${makeColors[index]})`} />
+												</>
+											)
+										})}
+									</SimpleGrid>
 								</SimpleGrid>
 								</Center>
 
 								<Center>
 								<SimpleGrid columns={1} m="1rem">
 									<Box width="auto">
-											<Circle size="40px" bg="white"></Circle>
+											<Circle size="40px" bg="white">
+											<Stack>
+												<ArrowForwardIcon color="#0D0844" ml="6px" mb="-12px"/>
+												<ArrowBackIcon color="#0D0844"/>
+											</Stack>
+											</Circle>
 									</Box>
 								</SimpleGrid>
 								</Center>
 								
 								<Center>
-								<SimpleGrid columns={2} spacing='.15rem'>
-									{make.map((makeOrder, index) => {
-										const boxSize = make.length > 1 ? '2.5rem' : '5.5rem'
-
-									  return (index < 4) && (
-											<>
-												<Box minHeight={boxSize} width={boxSize} borderRadius="8px" bgGradient={`linear(to-br, ${takeColors[index]})`} />
-											</>
-										)
-									})}
-									{make.length > 4 && <p>+{make.length - 4}</p>}
-								</SimpleGrid>
+									<SimpleGrid columns={2}>
+										<SimpleGrid columns={2} spacing='.2rem'>
+											{make.map((makeOrder, index) => {
+												const boxSize = make.length > 1 ? '2.5rem' : '5.5rem'
+												return (index < 4) && (
+													<>
+														<Box minHeight={boxSize} width={boxSize} borderRadius="8px" bgGradient={`linear(to-br, ${takeColors[index]})`} />
+													</>
+												)
+											})}
+										</SimpleGrid>
+										<SimpleGrid columns={1}>
+										{make.length > 4 && <Text mt="34px" fontSize="xs">+{make.length - 4}</Text>}
+										</SimpleGrid>
+									</SimpleGrid>
 								</Center>
 								
 								<Center>
 								<SimpleGrid column={1}>
 								{make.map((makeDetails) => {
 									return (
-										<ul>
-											<li>{makeDetails.amount || "1"} {makeDetails.tokenName}</li>
-										</ul>
+										<Text fontSize="xs" textAlign="left">
+											• {makeDetails.amount || "1"} {makeDetails.tokenName}
+										</Text>
 									)
 								})}
 								</SimpleGrid>
