@@ -1,6 +1,6 @@
 import React from 'react';
 import NftData from '../data/test_data.json';
-import { Box, Center, Text, Stack, Grid, GridItem, SimpleGrid, Circle } from "@chakra-ui/react"
+import { Box, Center, Circle, Divider, Grid, GridItem, Stack, SimpleGrid, Text } from "@chakra-ui/react"
 import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons'
 
 const makeColors = ["#2115A9 10.54%, #FFFFFF 132.1%", "#52FF00 10.54%, #FFFFFF 132.1%", "#35FFCF 10.54%, #FFFFFF 132.1%", "#FFC93D 10.54%, #FFFFFF 132.1%"]
@@ -28,9 +28,10 @@ export default function NftList () {
 							color="white"
 							p="1rem"
 							backgroundColor="rgba(255, 255, 255, 0.05)"
-						>
+							>
 							
-							<Center >
+							<Center>
+										<Divider zIndex="-1" orientation="vertical" height="20vh" mt="4px" position="absolute" transform="translateX(-50%)"/>
 							<SimpleGrid columns={5} spacing='.25rem' m='1rem'>
 
 								<Center>
@@ -64,15 +65,17 @@ export default function NftList () {
 								</Center>
 
 								<Center>
-								<SimpleGrid columns={1} m="1rem">
-									<Box width="auto">
-											<Circle size="40px" bg="white">
-											<Stack>
+
+								<SimpleGrid columns={1} m=".5rem">
+									
+										<Circle size="40px" bg="white">
+											<Stack zIndex="100">
 												<ArrowForwardIcon color="#0D0844" ml="6px" mb="-12px"/>
 												<ArrowBackIcon color="#0D0844"/>
 											</Stack>
-											</Circle>
-									</Box>
+
+										</Circle>
+									
 								</SimpleGrid>
 								</Center>
 								
@@ -105,11 +108,14 @@ export default function NftList () {
 								})}
 								</SimpleGrid>
 								</Center>
-								
 							</SimpleGrid>
+							
 
-							</Center>
+							</Center>							
+						
 						</Box>
+						
+
 					</GridItem>
 					
 					<GridItem>
